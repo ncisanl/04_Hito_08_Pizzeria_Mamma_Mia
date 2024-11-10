@@ -1,52 +1,15 @@
 import { useState } from "react";
+import { useUser } from "../context/UserContext.jsx";
 
 export function Register() {
+  const { postRegister } = useUser();
   const [inputsValue, setInputsValue] = useState({
     email: "",
     password: "",
-    passwordConfirm: "",
   });
 
-  const handelInputsValue = (event) =>
-    setInputsValue({ ...inputsValue, [event.target.name]: event.target.value });
-
-  const handleFormRegister = () => {
-    if (
-      inputsValue.email.length === 0 &&
-      inputsValue.password.length === 0 &&
-      inputsValue.passwordConfirm.length === 0
-    ) {
-      alert(
-        "Ingresar correo electrónico, contraseña y confirmación de contraseña",
-      );
-      return;
-    }
-    if (inputsValue.email.length === 0) {
-      alert("Ingresar correo electrónico");
-      return;
-    }
-    if (inputsValue.password.length === 0) {
-      alert("Ingresar contraseña");
-      return;
-    }
-    if (inputsValue.password.length < 6) {
-      alert("Contraseña debe ser mayor a 6 caracteres");
-      return;
-    }
-    if (inputsValue.passwordConfirm.length === 0) {
-      alert("Ingresar confirmación de contraseña");
-      return;
-    }
-    if (inputsValue.passwordConfirm.length < 6) {
-      alert("Confirmación de contraseña debe ser mayor a 6 caracteres");
-      return;
-    }
-    if (inputsValue.password !== inputsValue.passwordConfirm) {
-      alert("Contraseña y confirmación no coinciden");
-      return;
-    }
-    alert("Registrado exitosamente");
-  };
+  const handelInputsValue = (e) =>
+    setInputsValue({ ...inputsValue, [e.target.name]: e.target.value });
 
   return (
     <>
@@ -66,7 +29,7 @@ export function Register() {
               onChange={handelInputsValue}
             />
           </div>
-          <div className="col-6">
+          <div className="col-12">
             <label htmlFor="inputPassword" className="form-label">
               Contraseña
             </label>
@@ -79,24 +42,12 @@ export function Register() {
               onChange={handelInputsValue}
             />
           </div>
-          <div className="col-6">
-            <label htmlFor="inputPasswordConfirm" className="form-label">
-              Confirmar contraseña
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPasswordConfirm"
-              name="passwordConfirm"
-              placeholder="Ingresar confirmación de contraseña"
-              onChange={handelInputsValue}
-            />
-          </div>
           <div className="col-12">
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={handleFormRegister}
+              onClick={(event) => postRegister(event, inputsValue)}
+              disabled={inputsValue.email === "" || inputsValue.password === ""}
             >
               Registrar
             </button>

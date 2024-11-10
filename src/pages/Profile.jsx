@@ -1,5 +1,7 @@
+import { useUser } from "../context/UserContext.jsx";
+
 export function Profile() {
-  const emailTest = "correo@temporal.cl";
+  const { user } = useUser();
   return (
     <>
       <div className="form-register pt-3 pb-3">
@@ -16,7 +18,8 @@ export function Profile() {
               name="email"
               placeholder="Ingresar correo electrónico"
               disabled
-              value={emailTest}
+              key={user.id}
+              value={user.email}
             />
           </div>
           <div className="col-12">

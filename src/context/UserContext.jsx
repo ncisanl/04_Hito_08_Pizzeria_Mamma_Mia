@@ -46,6 +46,24 @@ export function UserProvider({ children }) {
     alert("Inició sesión exitosamente");
   };
 
+  useEffect(() => {
+    if (token !== "") {
+      const getUser = async () => {
+        const resUser = await fetch("http://localhost:5000/api/auth/me", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await resUser.json();
+        console.log("data getUser: ", data);
+        setUser(data);
+      };
+
+      getUser();
+    }
+  }, [token]);
+
   return (
     <userContext.Provider
       value={{ token, logout, postRegister, postLogin, user }}

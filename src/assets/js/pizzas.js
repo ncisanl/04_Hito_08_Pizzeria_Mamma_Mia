@@ -1,0 +1,66 @@
+//TODO: Ya no se utiliza pero está para comprender el consumo desde un JS y la estructura inicial de este.
+
+export const pizzas = [
+  {
+    id: "1",
+    name: "Napolitana",
+    price: 5950,
+    ingredients: ["mozzarella", "tomates", "jamón", "orégano"],
+    quantity: 1,
+    img: "https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_cl.jpg?alt=media&token=6a9a33da-5c00-49d4-9080-784dcc87ec2c",
+  },
+  {
+    id: "2",
+    name: "Española",
+    price: 6950,
+    ingredients: ["mozzarella", "gorgonzola", "parmesano", "provolone"],
+    quantity: 1,
+    img: "https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fcheese-164872_640_com.jpg?alt=media&token=18b2b821-4d0d-43f2-a1c6-8c57bc388fab",
+  },
+  {
+    id: "3",
+    name: "Pepperoni",
+    price: 6950,
+    ingredients: ["mozzarella", "pepperoni", "orégano"],
+    quantity: 1,
+    img: "https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_com.jpg?alt=media&token=e7cde87a-08d5-4040-ac54-90f6c31eb3e3",
+  },
+  {
+    id: "4",
+    name: "Italiana",
+    price: 6500,
+    ingredients: [
+      "mozzarella",
+      "orégano",
+      "pepperoni",
+      "salchicha italiana",
+      "aceitunas negras",
+      "champiñon",
+    ],
+    quantity: 1,
+    img: "https://cdn.papajohns.cl/thumbnails/pizzas/italiana_1691160148_medium_1696353025_extra_large.jpg",
+  },
+  {
+    id: "5",
+    name: "Vegetariana",
+    price: 6590,
+    ingredients: [
+      "mozzarella",
+      "cebolla",
+      "pimiento verde",
+      "tomate",
+      "aceitunas negras",
+      "champiñon",
+    ],
+    quantity: 1,
+    img: "https://cdn.papajohns.cl/thumbnails/pizzas/vegetariana_1691160093_medium_1696352858_extra_large.jpg",
+  },
+  {
+    id: "6",
+    name: "Hawaiana",
+    price: 7450,
+    ingredients: ["piña", "jamon", "extra mozzarella"],
+    quantity: 1,
+    img: "https://cdn.papajohns.cl/thumbnails/pizzas/hawaiana_1691160205_medium_1696353193_extra_large.jpg",
+  },
+];

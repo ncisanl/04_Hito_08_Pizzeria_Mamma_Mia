@@ -17,7 +17,7 @@ export function Cart() {
         <h1 className="mt-3">Cantidad:{quantityTotal}</h1>
         <h1>Total: ${totalCart.toLocaleString("es-CL")}</h1>
         <button
-          disabled={quantityTotal === 0 || !token}
+          disabled={quantityTotal === 0 || token === ""}
           type="button"
           className="btn btn-dark mb-3 button-pay"
         >

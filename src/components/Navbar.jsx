@@ -21,7 +21,7 @@ export function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              {token ? (
+              {token !== "" ? (
                 <NavLink className="nav-link" to="/profile">
                   🔓 Profile
                 </NavLink>
@@ -32,7 +32,7 @@ export function Navbar() {
               )}
             </li>
             <li className="nav-item">
-              {token ? (
+              {token !== "" ? (
                 <button className="nav-link" onClick={() => logout()}>
                   🔒 Logout
                 </button>

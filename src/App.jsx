@@ -20,17 +20,17 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="/login"
-          element={token ? <Navigate to="/" /> : <Login />}
+          element={token !== "" ? <Navigate to="/" /> : <Login />}
         />
         <Route
           path="/register"
-          element={token ? <Navigate to="/" /> : <Register />}
+          element={token !== "" ? <Navigate to="/" /> : <Register />}
         />
         <Route path="/cart" element={<Cart />} />
         <Route path="/pizza/:idPizza" element={<Pizza />} />
         <Route
           path="/profile"
-          element={!token ? <Navigate to="/login" /> : <Profile />}
+          element={token === "" ? <Navigate to="/login" /> : <Profile />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>

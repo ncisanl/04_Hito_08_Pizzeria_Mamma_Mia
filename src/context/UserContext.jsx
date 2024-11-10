@@ -4,7 +4,10 @@ const userContext = createContext();
 
 export function UserProvider({ children }) {
   const [token, setToken] = useState("");
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    id: "",
+    email: "",
+  });
 
   const logout = () => setToken(false);
 
@@ -16,8 +19,6 @@ export function UserProvider({ children }) {
       body: JSON.stringify(inputsValue),
     });
     const data = await resRegister.json();
-
-    console.log("data postRegister: ", data);
 
     if (data?.error) {
       return alert(data?.error);
@@ -35,8 +36,6 @@ export function UserProvider({ children }) {
       body: JSON.stringify(inputsValue),
     });
     const data = await resRegister.json();
-
-    console.log("data postLogin: ", data);
 
     if (data?.error) {
       return alert(data?.error);
@@ -56,8 +55,11 @@ export function UserProvider({ children }) {
           },
         });
         const data = await resUser.json();
-        console.log("data getUser: ", data);
-        setUser(data);
+
+        setUser({
+          id: data.id,
+          email: data.email,
+        });
       };
 
       getUser();

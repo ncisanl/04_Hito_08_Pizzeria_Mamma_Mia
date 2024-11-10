@@ -1,7 +1,13 @@
 import { useUser } from "../context/UserContext.jsx";
+import { useEffect } from "react";
 
 export function Profile() {
-  const { logout, user } = useUser();
+  const { logout, getUser, user } = useUser();
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <>
       <div className="form-register pt-3 pb-3">
@@ -16,7 +22,6 @@ export function Profile() {
               className="form-control"
               id="inputEmail"
               name="email"
-              placeholder="Ingresar correo electrónico"
               disabled
               key={user.id}
               value={user.email}

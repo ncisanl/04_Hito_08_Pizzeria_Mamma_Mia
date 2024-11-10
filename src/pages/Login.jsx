@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useUser } from "../context/UserContext.jsx";
 
 export function Login() {
+  const { postLogin } = useUser();
   const [inputsValue, setInputsValue] = useState({
     email: "",
     password: "",
@@ -8,26 +10,6 @@ export function Login() {
 
   const handelInputsValue = (event) =>
     setInputsValue({ ...inputsValue, [event.target.name]: event.target.value });
-
-  const handleFormLogin = () => {
-    if (inputsValue.email.length === 0 && inputsValue.password.length === 0) {
-      alert("Ingresar correo electrónico y contraseña");
-      return;
-    }
-    if (inputsValue.email.length === 0) {
-      alert("Ingresar correo electrónico");
-      return;
-    }
-    if (inputsValue.password.length === 0) {
-      alert("Ingresar contraseña");
-      return;
-    }
-    if (inputsValue.password.length < 6) {
-      alert("Contraseña debe ser mayor a 6 caracteres");
-      return;
-    }
-    alert("Inició sesión exitosamente");
-  };
 
   return (
     <>
@@ -64,7 +46,8 @@ export function Login() {
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={handleFormLogin}
+              onClick={(event) => postLogin(event, inputsValue)}
+              disabled={inputsValue.email === "" || inputsValue.password === ""}
             >
               Iniciar sesión
             </button>

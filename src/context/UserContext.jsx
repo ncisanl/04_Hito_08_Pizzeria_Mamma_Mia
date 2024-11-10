@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const userContext = createContext();
 
 export function UserProvider({ children }) {
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState("");
   const [user, setUser] = useState({});
 
   const logout = () => setToken(false);
@@ -17,18 +17,39 @@ export function UserProvider({ children }) {
     });
     const data = await resRegister.json();
 
-    console.log("data: ", data);
+    console.log("data postRegister: ", data);
 
     if (data?.error) {
       return alert(data?.error);
     }
 
-    setUser(data);
-    alert("Registro exitoso");
+    setToken(data.token);
+    alert("Registrado exitosamente");
+  };
+
+  const postLogin = async (event, inputsValue) => {
+    event.preventDefault();
+    const resRegister = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(inputsValue),
+    });
+    const data = await resRegister.json();
+
+    console.log("data postLogin: ", data);
+
+    if (data?.error) {
+      return alert(data?.error);
+    }
+
+    setToken(data.token);
+    alert("Inició sesión exitosamente");
   };
 
   return (
-    <userContext.Provider value={{ token, logout, postRegister, user }}>
+    <userContext.Provider
+      value={{ token, logout, postRegister, postLogin, user }}
+    >
       {children}
     </userContext.Provider>
   );

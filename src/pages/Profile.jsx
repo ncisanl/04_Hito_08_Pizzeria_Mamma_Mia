@@ -1,7 +1,7 @@
 import { useUser } from "../context/UserContext.jsx";
 
 export function Profile() {
-  const { user } = useUser();
+  const { logout, user } = useUser();
   return (
     <>
       <div className="form-register pt-3 pb-3">
@@ -23,7 +23,7 @@ export function Profile() {
             />
           </div>
           <div className="col-12">
-            <button type="submit" className="btn btn-primary">
+            <button className="btn btn-primary" onClick={() => logout()}>
               Cerrar sesión
             </button>
           </div>

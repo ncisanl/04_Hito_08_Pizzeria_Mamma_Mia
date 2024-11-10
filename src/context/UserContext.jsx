@@ -9,7 +9,13 @@ export function UserProvider({ children }) {
     email: "",
   });
 
-  const logout = () => setToken(false);
+  const logout = () => {
+    setToken("");
+    setUser({
+      id: "",
+      email: "",
+    });
+  };
 
   const postRegister = async (event, inputsValue) => {
     event.preventDefault();

@@ -4,7 +4,7 @@ import { useUser } from "../context/UserContext.jsx";
 
 export function Cart() {
   const { token } = useUser();
-  const { pizzaCart, totalCart, quantityTotal } = useCart();
+  const { pizzaCart, totalCart, quantityTotal, postCart } = useCart();
 
   const mapPizzas = pizzaCart.map((pizza) => {
     return <CardPizza key={pizza.idCart} pizzaInfo={pizza} cartButton={true} />;
@@ -20,6 +20,7 @@ export function Cart() {
           disabled={quantityTotal === 0 || token === ""}
           type="button"
           className="btn btn-dark mb-3 button-pay"
+          onClick={() => postCart()}
         >
           Pagar 🤑
         </button>
